@@ -55,4 +55,8 @@ app.post('/delete/:id', (req, res) => {
   })
 });
 
+app.get('/edit/:id', (req, res) => {
+  res.render('edit.ejs');
+})
+
 app.listen(3000);
