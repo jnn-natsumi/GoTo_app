@@ -20,11 +20,11 @@ connection.connect((err) => {
   console.log('success');
 });
 
-app.get('/', (req, res) => {
+app.get('/top', (req, res) => {
     res.render('top.ejs');
 });
 
-app.get('/index', (req, res) => {
+app.get('/', (req, res) => {
   connection.query(
     'SELECT * FROM list_app',
     (error, results) => {
@@ -33,30 +33,27 @@ app.get('/index', (req, res) => {
   );
 });
 
-app.get('/new', (req, res) => {
-  res.render('new.ejs');
-});
-
 app.post('/create', (req, res) => {
   connection.query(
-    'INSERT INTO items (name) VALUES (?)',
+    'INSERT INTO list_app (name) VALUES (?)',
     [req.body.itemName],
     (error, results) => {
-      res.redirect('/index');
+      res.redirect('/');
     }
   );
 });
 
 app.post('/delete/:id', (req, res) => {
-  connection.query('DELETE FROM items WHERE id = ?',
+  connection.query('DELETE FROM list_app WHERE id = ?',
   [req.params.id],
   (error, results) => {
-    res.redirect('/index');
+    res.redirect('/');
   })
 });
 
 app.get('/edit/:id', (req, res) => {
   res.render('edit.ejs');
 })
+
 
 app.listen(3000);

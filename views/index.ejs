@@ -8,12 +8,18 @@
   </head>
   <body>
     <header>
-      <a class="header-logo" href="/">GoTo APP</a>
+      <a class="header-logo" href="/top">What are "GoTo APP"</a>
     </header>
     <div class="container">
       <div class="container-header">
         <h1>旅行リスト</h1>
-        <a href="/new" class="new-button">+ 新規作成</a>
+      </div>
+      <div class="item-form-wrapper">
+        <p class="form-label">行きたいところ</p>
+        <form action="/create" method="post">
+        <input type="text" name="list_appName">
+        <input type="submit" value="作成する">
+        </form>
       </div>
       <div class="index-table-wrapper">
         <div class="table-head">

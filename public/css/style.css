@@ -270,8 +270,6 @@ header {
 
 /* new, edit ================================ */
 .item-form-wrapper {
-  background-color: #ffffff;
-  border: 1px solid #f0f4f9;
   border-radius: 0px 0px 2px 2px;
   padding: 32px;
 }
