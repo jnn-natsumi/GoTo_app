@@ -17,8 +17,8 @@
       </div>
       <div class="item-form-wrapper">
         <p class="form-label">行きたいところ</p>
-        <form>
-          <input type="text">
+        <form action="/update/<%=name.id%>" method="post">
+          <input name="nameName" type="text" value="<%= name.name %>">
           <input type="submit" value="更新する">
         </form>
       </div>

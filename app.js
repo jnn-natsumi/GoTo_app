@@ -26,17 +26,18 @@ app.get('/top', (req, res) => {
 
 app.get('/', (req, res) => {
   connection.query(
-    'SELECT * FROM list_app',
+    'SELECT * FROM names',
     (error, results) => {
-      res.render('index.ejs', {list_app:results});
+      console.log(results);
+      res.render('index.ejs', {names:results});
     }
   );
 });
 
 app.post('/create', (req, res) => {
   connection.query(
-    'INSERT INTO list_app (name) VALUES (?)',
-    [req.body.itemName],
+    'INSERT INTO names (name) VALUES (?)',
+    [req.body.nameName],
     (error, results) => {
       res.redirect('/');
     }
@@ -44,7 +45,7 @@ app.post('/create', (req, res) => {
 });
 
 app.post('/delete/:id', (req, res) => {
-  connection.query('DELETE FROM list_app WHERE id = ?',
+  connection.query('DELETE FROM names WHERE id = ?',
   [req.params.id],
   (error, results) => {
     res.redirect('/');
@@ -52,8 +53,20 @@ app.post('/delete/:id', (req, res) => {
 });
 
 app.get('/edit/:id', (req, res) => {
-  res.render('edit.ejs');
-})
+  connection.query(
+    'select *  from names where id= ?',
+    [req.params.id],
+    (error, results) => {
+      res.render('edit.ejs', {name:  results[0]});
+    })
+});
 
-
+app.post('/update/:id', (req, res) => {
+  connection.query(
+    'update names set name = ? where id =?',
+    [req.body.nameName,req.params.id],
+    (error, results) => {
+      res.redirect('/');
+    })
+});
 app.listen(3000);
