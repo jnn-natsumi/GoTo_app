@@ -17,7 +17,7 @@
       <div class="item-form-wrapper">
         <p class="form-label">行きたいところ</p>
         <form action="/create" method="post">
-        <input type="text" name="list_appName">
+        <input type="text" name="nameName">
         <input type="submit" value="作成する">
         </form>
       </div>
@@ -26,30 +26,21 @@
           <span class="id-column">ID</span>
           <span>行きたいところ</span>
         </div>
-        <% const items = [
-        {id: 1, name: '富士急ハイランド'},
-        {id: 2, name: 'ディズニーシー'},
-        {id: 3, name: 'ダイバーシティ'}
-        ]; %>
         <ul class="table-body">
-            <% items.forEach((item) => {%>
+          <% names.forEach((name) => { %>
             <li>
-                <div class="item-data">
-                <span class="id-column">
-                    <%= item.id %>
-                </span>
-                <span class="name-column">
-                    <%= item.name %>
-                </span>
-                </div>
-                <div class="item-menu">
-                    <form action="/delete/<%= item.id %>" method="post">
-                    <input type="submit" value="削除">
-                    </form>
-                    <a href="/edit/<%= item.id %>">編集</a>
-                </div>
+              <div class="item-data">
+                <span class="id-column"><%= name.id %></span>
+                <span class="name-column"><%= name.name %></span>
+              </div>
+              <div class="item-menu">
+                <form action="/delete/<%= name.id %>" method="post">
+                <input type="submit" value="削除">
+                </form>
+                <a href="/edit/<%= name.id %>">編集</a>
+              </div>
             </li>
-        <% }); %>
+          <% }) %>
         </ul>
       </div>
     </div>
