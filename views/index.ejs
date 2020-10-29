@@ -27,21 +27,22 @@
           <span>行きたいところ</span>
         </div>
         <ul class="table-body">
-          <% names.forEach((name) => { %>
-            <li>
-              <div class="item-data">
-                <span class="id-column"><%= name.id %></span>
-                <span class="name-column"><%= name.name %></span>
-              </div>
-              <div class="item-menu">
-                <form action="/delete/<%= name.id %>" method="post">
-                <input type="submit" value="削除">
-                </form>
-                <a href="/edit/<%= name.id %>">編集</a>
-              </div>
-            </li>
-          <% }) %>
-        </ul>
+          <ul class="table-body">
+            <% names.forEach((name) => { %>
+              <li>
+                <div class="item-data">
+                  <span class="id-column"><%= name.id %></span>
+                  <span class="name-column"><%= name.name %></span>
+                </div>
+                <div class="item-menu">
+                  <form action="/delete/<%= name.id %>" method="post">
+                  <input type="submit" value="削除">
+                  </form>
+                  <a href="/edit/<%= name.id %>">編集</a>
+                </div>
+              </li>
+            <% }) %>
+          </ul>
       </div>
     </div>
   </body>
